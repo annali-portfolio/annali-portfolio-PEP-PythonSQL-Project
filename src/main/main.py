@@ -71,7 +71,7 @@ with open("users.csv", "r+") as user_list:
                 break
             else clean_user_list.append(split_line)
 
-with open("user_test.csv", "w") as user_list:
+with open("users.csv", "w") as user_list:
     csv_writer = csv.writer("user_test.csv")
     csv_writer.writerows(clean_user_list)
 
