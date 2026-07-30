@@ -71,9 +71,9 @@ def load_and_clean_users(file_path):
                     break
             clean_user_list.append(split_line)
 
-    with open("users.csv", "w") as user_list:
-        csv_writer = csv.writer("user_test.csv")
-        csv_writer.writerows(clean_user_list)
+    #with open("users.csv", "w") as user_list:
+        #csv_writer = csv.writer("user_test.csv")
+        #csv_writer.writerows(clean_user_list)
 
     print("TODO: load_users")
 
@@ -99,9 +99,9 @@ def load_and_clean_call_logs(file_path):
                     break
             clean_call_logs.append(split_line)
 
-    with open("callLogs.csv", "w") as user_list:
-        csv_writer = csv.writer("callLogs.csv")
-        csv_writer.writerows(clean_call_logs)
+    #with open("callLogs.csv", "w") as user_list:
+        #csv_writer = csv.writer("callLogs.csv")
+        #csv_writer.writerows(clean_call_logs)
 
     print("TODO: load_call_logs")
 
