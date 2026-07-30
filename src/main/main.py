@@ -70,8 +70,8 @@ def load_and_clean_users(file_path):
                 clean_user_list.append(split_line)
 
 
-    with open(file_path, "r") as user_list:
-        cursor.execute("INSERT INTO users (firstName, lastName) VALUES (?, ?)")
+    for first_name, last_name in clean_user_list:
+        cursor.execute("INSERT INTO users (firstName, lastName) VALUES (?, ?)", (first_name, last_name))
 
     print("TODO: load_users")
 
