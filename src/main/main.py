@@ -62,6 +62,7 @@ def load_and_clean_users(file_path):
     clean_user_list = []
 
     with open(file_path, "r") as user_list:
+        next(user_list)
         for line in user_list:
             split_line = line.strip().split(',')
             if len(split_line) != 2:
