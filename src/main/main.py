@@ -71,13 +71,13 @@ def load_and_clean_users(file_path):
                     break
             clean_user_list.append(split_line)
 
-    with open("users.csv", "w") as user_list:
+    with open(file_path, "w") as user_list:
         csv_writer = csv.writer(user_list)
         for item in clean_user_list:
             cvs_writer.writerow(item)
 
     #with open("users.csv", "r") as user_list:
-    cursor.execute("INSERT INTO users (userID, firstName, lastName) VALUES (?, ?, ?)")
+    #cursor.execute("INSERT INTO users (userID, firstName, lastName) VALUES (?, ?, ?)")
 
     print("TODO: load_users")
 
@@ -93,7 +93,7 @@ def load_and_clean_call_logs(file_path):
     
     clean_call_logs = []
 
-    with open("callLogs.csv", "r+") as call_logs:
+    with open(file_path, "r+") as call_logs:
         for line in call_logs:
             split_line = line.split(',')
             if len(split_line) != 5:
