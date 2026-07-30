@@ -76,8 +76,8 @@ def load_and_clean_users(file_path):
         for item in clean_user_list:
             csv_writer.writerow(item)
 
-    #with open("users.csv", "r") as user_list:
-    #cursor.execute("INSERT INTO users (userID, firstName, lastName) VALUES (?, ?, ?)")
+    with open(file_path, "r") as user_list:
+        cursor.execute("INSERT INTO users (userID, firstName, lastName) VALUES (?, ?, ?)")
 
     print("TODO: load_users")
 
