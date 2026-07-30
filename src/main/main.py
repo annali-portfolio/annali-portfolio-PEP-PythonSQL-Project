@@ -99,8 +99,7 @@ def load_and_clean_call_logs(file_path):
     for phone_number, start_time, end_time, direction in clean_call_logs:
         cursor.execute("INSERT INTO callLogs (phoneNumber, startTime, endTime, direction) VALUES (?, ?, ?, ?)", (phone_number, start_time, end_time, direction))
 
-
-    print("TODO: load_call_logs")
+    #print("TODO: load_call_logs")
 
 
 
@@ -113,7 +112,40 @@ def load_and_clean_call_logs(file_path):
 # example: 1,105.0,4 - where 1 is the userId, 105.0 is the avgDuration, and 4 is the numCalls.
 def write_user_analytics(csv_file_path):
 
-    print("TODO: write_user_analytics")
+    cursor.execute("SELECT userID, duration FROM callLogs")
+    call_logs_select_duration = cursor.fetchall()
+
+    total_duration = {}
+    call_count = {}
+
+    for user_id, duration in call_logs_select_duration:
+        total_duration[user_id] = total_duration.get(user_id, 0) + duration
+        call_count[user_id] = call_count.get(user_id, 0) + 1
+
+    avg_duration = {}
+
+    for user_id in call_count:
+        avg_duration[user_id] = total_duration[user_id] / call_count[user_id]
+
+    with open(csv_file_path, "a+") as user_analytics:
+        user_analytics.write("\n")
+        for user_id in avg_duration:
+            user_analytics.write(f"{user_id}, {call_count[user_id]}, {avg_duration[user_id]}\n")
+
+
+
+    #print("TODO: write_user_analytics")
+
+
+
+
+
+
+
+
+
+
+
 
 
 # This function will write the callLogs ordered by userId, then start time.
@@ -121,6 +153,13 @@ def write_user_analytics(csv_file_path):
 def write_ordered_calls(csv_file_path):
 
     print("TODO: write_ordered_calls")
+
+
+
+
+
+
+
 
 
 
