@@ -56,8 +56,8 @@ def load_and_clean_users(file_path):
 
 
 
-Clean the data before insertion. In this project, you just have to leave out any records with missing values or too many values.
-HINT: For every record in users.csv, make sure it has the correct number of fields and no empty values before inserting into the Database.
+#Clean the data before insertion. In this project, you just have to leave out any records with missing values or too many values.
+#HINT: For every record in users.csv, make sure it has the correct number of fields and no empty values before inserting into the Database.
 
 clean_user_list = []
 
