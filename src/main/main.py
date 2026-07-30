@@ -61,7 +61,7 @@ def load_and_clean_users(file_path):
 
     clean_user_list = []
 
-    with open("users.csv", "r+") as user_list:
+    with open(file_path, "r+") as user_list:
         for line in user_list:
             split_line = line.split(',')
             if len(split_line) != 2:
@@ -75,6 +75,9 @@ def load_and_clean_users(file_path):
         csv_writer = csv.writer(user_list)
         for item in clean_user_list:
             cvs_writer.writerow(item)
+
+    #with open("users.csv", "r") as user_list:
+    cursor.execute("INSERT INTO users (userID, firstName, lastName) VALUES (?, ?, ?)")
 
     print("TODO: load_users")
 
