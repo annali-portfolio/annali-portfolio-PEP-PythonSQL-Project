@@ -59,21 +59,21 @@ def load_and_clean_users(file_path):
 #Clean the data before insertion. In this project, you just have to leave out any records with missing values or too many values.
 #HINT: For every record in users.csv, make sure it has the correct number of fields and no empty values before inserting into the Database.
 
-clean_user_list = []
+    clean_user_list = []
 
-with open("users.csv", "r+") as user_list:
-    for line in user_list:
-        split_line = line.split(',')
-        if len(split_line) != 2:
-            continue
-        for item in split_line:
-            if not item.isalpha():
-                break
-            else clean_user_list.append(split_line)
+    with open("users.csv", "r+") as user_list:
+        for line in user_list:
+            split_line = line.split(',')
+            if len(split_line) != 2:
+                continue
+            for item in split_line:
+                if not item.isalpha():
+                    break
+                else clean_user_list.append(split_line)
 
-with open("users.csv", "w") as user_list:
-    csv_writer = csv.writer("user_test.csv")
-    csv_writer.writerows(clean_user_list)
+    with open("users.csv", "w") as user_list:
+        csv_writer = csv.writer("user_test.csv")
+        csv_writer.writerows(clean_user_list)
 
 
 #1. split every line in user csv into list
