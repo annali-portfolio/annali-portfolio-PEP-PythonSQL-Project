@@ -72,7 +72,7 @@ def load_and_clean_users(file_path):
             clean_user_list.append(split_line)
 
     with open("users.csv", "w") as user_list:
-        csv_writer = csv.writer("user_test.csv")
+        csv_writer = csv.writer(user_list)
         for item in clean_user_list:
             cvs_writer.writerow(item)
 
