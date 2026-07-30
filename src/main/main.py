@@ -70,6 +70,10 @@ def load_and_clean_users(file_path):
             if all(item.isalpha() for item in split_line):
                 clean_user_list.append(split_line)
 
+    with open(file_path, "w") as user_list:
+        csv_writer = csv.writer(user_list)
+        for item in clean_user_list:
+            csv_writer.writerow(item)
 
     for first_name, last_name in clean_user_list:
         cursor.execute("INSERT INTO users (firstName, lastName) VALUES (?, ?)", (first_name, last_name))
