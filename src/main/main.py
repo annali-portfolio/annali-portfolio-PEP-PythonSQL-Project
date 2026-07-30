@@ -61,7 +61,7 @@ def load_and_clean_users(file_path):
 
     clean_user_list = []
 
-    with open(users.csv, "r+") as user_list:
+    with open("users.csv", "r+") as user_list:
         for line in user_list:
             split_line = line.split(',')
             if len(split_line) != 2:
@@ -71,9 +71,11 @@ def load_and_clean_users(file_path):
                     break
             clean_user_list.append(split_line)
 
-    with open(users.csv, "w") as user_list:
-        csv_writer = csv.writer("user_test.csv")
-        csv_writer.writerows(clean_user_list)
+    with open("users.csv", "w") as user_list:
+        for item in clean_user_list:
+            user_list.write(item)
+        #csv_writer = csv.writer("user_test.csv")
+        #csv_writer.writerows(clean_user_list)
 
     print("TODO: load_users")
 
