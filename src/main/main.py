@@ -67,13 +67,8 @@ def load_and_clean_users(file_path):
             split_line = line.strip().split(',')
             if len(split_line) != 2:
                 continue
-            if all(item.isalpha() for item in split_line):
+            if all(item != "" for item in split_line):
                 clean_user_list.append(split_line)
-
-    with open(file_path, "w") as user_list:
-        csv_writer = csv.writer(user_list)
-        for item in clean_user_list:
-            csv_writer.writerow(item)
 
     for first_name, last_name in clean_user_list:
         cursor.execute("INSERT INTO users (firstName, lastName) VALUES (?, ?)", (first_name, last_name))
@@ -92,15 +87,17 @@ def load_and_clean_call_logs(file_path):
     
     clean_call_logs = []
 
-    with open(file_path, "r+") as call_logs:
+    with open(file_path, "r") as call_logs:
+        next(call_logs)
         for line in call_logs:
-            split_line = line.split(',')
+            split_line = line.strip().split(',')
             if len(split_line) != 5:
                 continue
-            for item in split_line:
-                if item == '':
-                    break
-            clean_call_logs.append(split_line)
+            if all(item.isalpha() for item in split_line):
+                clean_user_list.append(split_line)
+
+    for first_name, last_name in clean_user_list:
+        cursor.execute("INSERT INTO users (firstName, lastName) VALUES (?, ?)", (first_name, last_name))
 
 
     print("TODO: load_call_logs")
