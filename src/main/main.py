@@ -61,15 +61,13 @@ def load_and_clean_users(file_path):
 
     clean_user_list = []
 
-    with open(file_path, "r+") as user_list:
+    with open(file_path, "r") as user_list:
         for line in user_list:
             split_line = line.split(',')
             if len(split_line) != 2:
                 continue
-            for item in split_line:
-                if not item.isalpha():
-                    break
-            clean_user_list.append(split_line)
+            if all(item.isalpha() for item in split_line):
+                clean_user_list.append(split_line)
 
     with open(file_path, "w") as user_list:
         csv_writer = csv.writer(user_list)
