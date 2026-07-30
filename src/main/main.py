@@ -63,7 +63,7 @@ def load_and_clean_users(file_path):
 
     with open(file_path, "r") as user_list:
         for line in user_list:
-            split_line = line.split(',')
+            split_line = line.strip().split(',')
             if len(split_line) != 2:
                 continue
             if all(item.isalpha() for item in split_line):
@@ -75,7 +75,7 @@ def load_and_clean_users(file_path):
             csv_writer.writerow(item)
 
     with open(file_path, "r") as user_list:
-        cursor.execute("INSERT INTO users (userID, firstName, lastName) VALUES (?, ?, ?)")
+        cursor.execute("INSERT INTO users (firstName, lastName) VALUES (?, ?)")
 
     print("TODO: load_users")
 
