@@ -67,7 +67,7 @@ def load_and_clean_users(file_path):
             split_line = line.strip().split(',')
             if len(split_line) != 2:
                 continue
-            if all(item != "" for item in split_line):
+            if all(item.isalpha() for item in split_line):
                 clean_user_list.append(split_line)
 
     for first_name, last_name in clean_user_list:
@@ -93,11 +93,11 @@ def load_and_clean_call_logs(file_path):
             split_line = line.strip().split(',')
             if len(split_line) != 5:
                 continue
-            if all(item.isalpha() for item in split_line):
-                clean_user_list.append(split_line)
+            if all(item != "" for item in split_line):
+                clean_call_logs.append(split_line)
 
-    for first_name, last_name in clean_user_list:
-        cursor.execute("INSERT INTO users (firstName, lastName) VALUES (?, ?)", (first_name, last_name))
+    for phone_number, start_time, end_time, direction in clean_call_logs:
+        cursor.execute("INSERT INTO callLogs (phoneNumber, startTime, endTime, direction) VALUES (?, ?, ?, ?)", (phone_number, start_time, end_time, direction))
 
 
     print("TODO: load_call_logs")
