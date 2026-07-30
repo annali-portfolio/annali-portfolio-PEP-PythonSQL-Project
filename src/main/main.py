@@ -78,7 +78,7 @@ def load_and_clean_users(file_path):
     for first_name, last_name in clean_user_list:
         cursor.execute("INSERT INTO users (firstName, lastName) VALUES (?, ?)", (first_name, last_name))
 
-    print("TODO: load_users")
+    #print("TODO: load_users")
 
 
 
