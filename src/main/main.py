@@ -106,7 +106,7 @@ def load_and_clean_call_logs(file_path):
     with open(file_path, "w") as call_logs:
         csv_writer = csv.writer(call_logs)
         for item in clean_call_logs:
-            cvs_writer.writerow(item)
+            csv_writer.writerow(item)
 
     print("TODO: load_call_logs")
 
