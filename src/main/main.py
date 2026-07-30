@@ -48,16 +48,16 @@ def main():
     conn.close()
 
 
+
+
+
+
+
 # TODO: Implement the following 4 functions. The functions must pass the unit tests to complete the project.
 
 
 # This function will load the users.csv file into the users table, discarding any records with incomplete data
 def load_and_clean_users(file_path):
-
-
-
-#Clean the data before insertion. In this project, you just have to leave out any records with missing values or too many values.
-#HINT: For every record in users.csv, make sure it has the correct number of fields and no empty values before inserting into the Database.
 
     clean_user_list = []
 
@@ -69,29 +69,46 @@ def load_and_clean_users(file_path):
             for item in split_line:
                 if not item.isalpha():
                     break
-                else clean_user_list.append(split_line)
+            clean_user_list.append(split_line)
 
     with open("users.csv", "w") as user_list:
         csv_writer = csv.writer("user_test.csv")
         csv_writer.writerows(clean_user_list)
 
-
-#1. split every line in user csv into list
-#2. check list for invalid values (not alphabet) and incorrect number of fields
-
-
-
-
-
-
-
     print("TODO: load_users")
+
+
+
+
+
+
 
 
 # This function will load the callLogs.csv file into the callLogs table, discarding any records with incomplete data
 def load_and_clean_call_logs(file_path):
+    
+    clean_call_logs = []
+
+    with open("callLogs.csv", "r+") as call_logs:
+        for line in call_logs:
+            split_line = line.split(',')
+            if len(split_line) != 5:
+                continue
+            for item in split_line:
+                if item == '':
+                    break
+            clean_call_logs.append(split_line)
+
+    with open("callLogs.csv", "w") as user_list:
+        csv_writer = csv.writer("callLogs.csv")
+        csv_writer.writerows(clean_call_logs)
 
     print("TODO: load_call_logs")
+
+
+
+
+
 
 
 # This function will write analytics data to testUserAnalytics.csv - average call time, and number of calls per user.
