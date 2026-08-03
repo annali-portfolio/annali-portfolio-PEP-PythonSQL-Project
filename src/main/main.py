@@ -74,8 +74,7 @@ def load_and_clean_users(file_path):
         cursor.execute("INSERT INTO users (firstName, lastName) VALUES (?, ?)", (first_name, last_name))
 
     #print("TODO: load_users")
-
-
+    
 
 
 
@@ -100,7 +99,7 @@ def load_and_clean_call_logs(file_path):
         cursor.execute("INSERT INTO callLogs (phoneNumber, startTime, endTime, direction) VALUES (?, ?, ?, ?)", (phone_number, start_time, end_time, direction))
 
     #print("TODO: load_call_logs")
-
+    
 
 
 
@@ -148,7 +147,7 @@ def write_user_analytics(csv_file_path):
 def write_ordered_calls(csv_file_path):
 
     print("TODO: write_ordered_calls")
-
+    return None
 
 
 
