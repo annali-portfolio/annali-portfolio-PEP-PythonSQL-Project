@@ -73,6 +73,7 @@ def load_and_clean_users(file_path):
     for first_name, last_name in clean_user_list:
         cursor.execute("INSERT INTO users (firstName, lastName) VALUES (?, ?)", (first_name, last_name))
 
+
     #print("TODO: load_users")
     
 
@@ -97,6 +98,7 @@ def load_and_clean_call_logs(file_path):
 
     for phone_number, start_time, end_time, direction, user_ID in clean_call_logs:
         cursor.execute("INSERT INTO callLogs (phoneNumber, startTime, endTime, direction, userId) VALUES (?, ?, ?, ?, ?)", (phone_number, start_time, end_time, direction, user_ID))
+
 
     #print("TODO: load_call_logs")
     
@@ -131,7 +133,6 @@ def write_user_analytics(csv_file_path):
             user_analytics.write(f"{user_id}, {avg_duration[user_id]}, {call_count[user_id]} \n")
 
 
-
     #print("TODO: write_user_analytics")
 
 
@@ -156,11 +157,7 @@ def write_ordered_calls(csv_file_path):
         ordered_call_logs_csv.write("\n")
         writer = csv.writer(ordered_call_logs_csv)
         writer.writerows(ordered_call_logs_select)
-
-
-    # 1. order call logs table by userID, then start time
-    # 2. write ordered table to csv
-    
+  
 
     #print("TODO: write_ordered_calls")
     
