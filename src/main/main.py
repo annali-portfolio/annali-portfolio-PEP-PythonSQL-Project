@@ -95,12 +95,11 @@ def load_and_clean_call_logs(file_path):
             if all(item != "" for item in split_line):
                 clean_call_logs.append(split_line)
 
-    for user_ID, phone_number, start_time, end_time, direction in clean_call_logs:
+    for phone_number, start_time, end_time, direction, user_ID in clean_call_logs:
         cursor.execute("INSERT INTO callLogs (phoneNumber, startTime, endTime, direction) VALUES (?, ?, ?, ?)", (phone_number, start_time, end_time, direction))
 
     #print("TODO: load_call_logs")
     
-
 
 
 
