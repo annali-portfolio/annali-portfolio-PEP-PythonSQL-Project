@@ -153,9 +153,10 @@ def write_ordered_calls(csv_file_path):
 
     ordered_call_logs_select = cursor.fetchall()
 
-    with open(csv_file_path, "a+") as ordered_call_logs_csv:
+    with open(csv_file_path, "w") as ordered_call_logs_csv:
         ordered_call_logs_csv.write("\n")
-        #write sql table to csv
+        writer = csv.writer(ordered_call_logs_csv)
+        writer.writerows(ordered_call_logs_select)
 
 
 
