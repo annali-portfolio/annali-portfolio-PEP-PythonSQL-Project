@@ -96,7 +96,7 @@ def load_and_clean_call_logs(file_path):
                 clean_call_logs.append(split_line)
 
     for phone_number, start_time, end_time, direction, user_ID in clean_call_logs:
-        cursor.execute("INSERT INTO callLogs (phoneNumber, startTime, endTime, direction) VALUES (?, ?, ?, ?)", (phone_number, start_time, end_time, direction))
+        cursor.execute("INSERT INTO callLogs (phoneNumber, startTime, endTime, direction, userID) VALUES (?, ?, ?, ?,?)", (phone_number, start_time, end_time, direction, user_ID))
 
     #print("TODO: load_call_logs")
     
