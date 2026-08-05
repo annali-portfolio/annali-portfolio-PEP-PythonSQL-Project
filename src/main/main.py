@@ -151,12 +151,12 @@ def write_ordered_calls(csv_file_path):
     ORDER BY userID, startTime
     """)
 
-    # ordered_call_logs_select = cursor.fetchall()
+    ordered_call_logs_select = cursor.fetchall()
 
-    # with open(csv_file_path, "w") as ordered_call_logs_csv:
-    #     ordered_call_logs_csv.write("\n")
-    #     writer = csv.writer(ordered_call_logs_csv)
-    #     writer.writerows(ordered_call_logs_select)
+    with open(csv_file_path, "w") as ordered_call_logs_csv:
+        ordered_call_logs_csv.write("\n")
+        writer = csv.writer(ordered_call_logs_csv)
+        writer.writerows(ordered_call_logs_select)
 
 
 
