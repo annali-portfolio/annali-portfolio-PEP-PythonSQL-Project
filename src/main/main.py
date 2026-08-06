@@ -123,8 +123,7 @@ def write_user_analytics(csv_file_path):
         for user_id in call_count
     }
 
-    with open(csv_file_path, "a+") as user_analytics:
-        user_analytics.write("\n")
+    with open(csv_file_path, "w") as user_analytics:
         for user_id in avg_duration:
             user_analytics.write(f"{user_id}, {avg_duration[user_id]}, {call_count[user_id]} \n")
 
