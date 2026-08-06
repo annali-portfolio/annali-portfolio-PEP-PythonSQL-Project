@@ -78,10 +78,6 @@ def load_and_clean_users(file_path):
     
 
 
-
-
-
-
 # This function will load the callLogs.csv file into the callLogs table, discarding any records with incomplete data
 def load_and_clean_call_logs(file_path):
     
@@ -122,10 +118,10 @@ def write_user_analytics(csv_file_path):
         total_duration[user_id] = total_duration.get(user_id, 0) + duration
         call_count[user_id] = call_count.get(user_id, 0) + 1
 
-    avg_duration = {}
-
-    for user_id in call_count:
-        avg_duration[user_id] = total_duration[user_id] / call_count[user_id]
+    avg_duration = {
+        user_id : total_duration[user_id] / call_count[user_id]
+        for user_id in call_count
+    }
 
     with open(csv_file_path, "a+") as user_analytics:
         user_analytics.write("\n")
